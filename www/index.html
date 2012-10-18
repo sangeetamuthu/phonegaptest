@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.2.0.css" />
+        <script src="jquery-1.8.2.js"></script>
+        <script src="jquery.mobile-1.2.0.js"></script>
+        <script type="text/javascript" src="cordova-2.1.0.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <title>Hello World</title>
+
+        <script type="text/javascript">
+            document.addEventListener("deviceready", onDeviceReady, false);
+            function onDeviceReady() {
+              // accelerometer example
+//            var wId = navigator.accelerometer.watchAcceleration(onSuccess, onError,{frequency:1000});
+
+                //camera example
+                // navigator.camera.getPicture(onSuccess, onError, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+
+                //position api example
+                // navigator.geolocation.watchPosition(onSuccess, onError, { frequency: 1000 });
+
+                //notification exammple
+//                $('#button').click(function () {
+//                    navigator.notification.alert("You Clicked me!!", onSuccess, "Click", "ok");
+
+                //storage api example
+                });
+        }
+
+        function onSuccess(a) {
+
+        //accelerometer onsuccess example
+//                $('#aX').html(a.x);
+//                $('#aY').html(a.y);
+//                $('#aZ').html(a.z);
+            //                $('#aTime').html(a.timestamp);
+
+            // camera Onsuccess
+            //"a" variable in this case will be the file uri
+            //$('#imageuri').html(a);
+
+            //on location success , a in this case is the position info
+//            $('#lat').html(a.coords.latitude);
+            //            $('#long').html(a.coords.longitude);
+
+            //notification onsuccess example there is no "a" variable here
+            //$('#button').html('Clicked');
+            }
+
+            function onError() {
+            }
+
+            $(function () {
+                $('#saveButton').click(function () {
+                    window.localStorage.setItem("name", $('#name').val());
+                });
+
+                $('#newPage').live('pageshow', function () {
+                    var personName = window.localStorage.getItem("name");
+                    if (personName.length > 0) {
+                        $('#name').val(personName);
+                    }
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="home" data-role="page">
+            <div data-role="header"> 
+             <h1> Home Page</h1>
+            </div>
+            <div data-role="content">
+            Hello PhoneGap JQuery Mobile!!!
+            <p><a href="#newPage" data-role="button">New page</a></p>
+            <br />
+           <!-- accelerometer example-->
+          <!-- <p id="aX"></p>
+           <p id="aY"></p>
+           <p id="aZ"></p>
+           <p id="aTime"></p>-->
+
+           <!-- Camera Example-->
+           <!-- <p id="imageuri"></p>-->
+
+          <!-- Postion Api example-->
+        <!--   <p id="lat"></p>
+           <p id="long"></p>-->
+
+          <!-- Notification example-->
+          <!--<a id="button" href="#">Click Me</a>-->
+
+          <!-- Storage api example -->
+
+
+
+            </div>
+            <div data-role="footer" data-position="fixed">
+            <a href="#dialogPage" data-rel="dialog" data-icon="plus">Add Something</a>
+             <h4>copyright slickbytes</h4>
+            </div>
+        </div>
+
+        <div id="newPage" data-role="page">
+            <div data-role="header"> 
+            <a href="#home" data-icon="save">Save</a>
+             <h1> New Page</h1>
+              <a href="#home" data-icon="delete">Cancel</a>
+            </div>
+            <div data-role="content">
+                <label for="name">Type your Name:</label>
+                <input type="text" id="name" name="name" value="" />
+                <a id="saveButton" href="" data-role="button">Save</a>
+            </div>
+            <div data-role="footer" data-position="fixed">
+             <h4>copyright slickbytes</h4>
+            </div>
+        </div>
+
+        <div id="dialogPage" data-role="page">
+          <div data-role="header"> 
+             <h1> Dialog</h1>
+            </div>
+            <div data-role="content">
+                This is a dialog!!!
+            </div>
+           
+        </div>
+    </body>
+</html>
